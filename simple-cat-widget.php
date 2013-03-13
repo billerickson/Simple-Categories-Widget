@@ -3,8 +3,8 @@
 Plugin Name: Simple Category Widget
 Description: An easy to use plugin to show a category in a widget area. You can choose category, number of posts to show and featured image.
 Author: Eriks Briedis / Design Schemers
-Version: 1.1.1
-Author URI: http://www.designschemers.com http://eriks.designschemers.com
+Version: 1.2
+Author URI: http://www.designschemers.com
 License: GPLv2 or later
 */
 
