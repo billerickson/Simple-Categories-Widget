@@ -44,7 +44,7 @@ class DsAdvCatWidget extends WP_Widget {
 		echo $before_widget;
 		
 		if( !empty( $instance['title'] ) )
-			echo $before_title . apply_filters( 'widget_title', $title ) . $after_title;
+			echo $before_title . apply_filters( 'widget_title', $instance['title'] ) . $after_title;
 
 		$order = 'title' == $instance['order_by'] ? 'ASC' : 'DESC';
 		$args = array(
