@@ -33,7 +33,8 @@ add_action( 'widgets_init', 'ds_widgets_register_widgets' );
 class DsAdvCatWidget extends WP_Widget {
 
 	function DsAdvCatWidget() {
-		parent::WP_Widget(false, $name = 'Simple Categories Widget');
+		$widget_ops = array( 'classname' => 'widget_dsadvcatwidget', 'description' => 'Display posts from a single category' );
+		$this->WP_Widget( 'dsadvcat-widget', 'Simple Categories Widget', $widget_ops );
 	}
 
 
