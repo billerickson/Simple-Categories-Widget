@@ -159,8 +159,3 @@ class DsAdvCatWidget extends WP_Widget {
 	<?php
 	}
 }
-
-	// add_action( 'widgets_init', create_function( '', 'register_widget( "ds_adv_cat_widget_1_1" );' ) );
-	// wp_enqueue_script('scripts', WP_CONTENT_URL . '/plugins/simple-categories-widget/scripts.js', array(), '1.0.0', true);
-
-	?>
