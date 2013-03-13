@@ -44,13 +44,13 @@ class DsAdvCatWidget extends WP_Widget {
 		echo $before_widget;
 		
 		if( !empty( $instance['title'] ) )
-			echo $before_title . apply_filters( 'widget_title', $instance['title'] ) . $after_title;
+			echo $before_title . apply_filters( 'widget_title', esc_attr( $instance['title'] ) ) . $after_title;
 
 		$order = 'title' == $instance['order_by'] ? 'ASC' : 'DESC';
 		$args = array(
-			'showposts' => $instance['num_of_posts'],
-			'cat'		=> $instance['select'],
-			'orderby'	=> $instance['order_by'],
+			'showposts' => esc_attr( $instance['num_of_posts'] ),
+			'cat'		=> esc_attr( $instance['select'] ),
+			'orderby'	=> esc_attr( $instance['order_by'] ),
 			'order'		=> $order
 		);
 		$the_query = new WP_Query($args); ?>
