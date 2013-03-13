@@ -41,27 +41,12 @@ class DsAdvCatWidget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract($args);
 
-		$title = apply_filters('widget_title', $instance['title']);
-		$f_image = $instance['select'];
-		$order_by = $instance['order_by'];
-		$order = '';
-		$f_image = $instance['f_image'];
-		$num_of_posts = $instance['num_of_posts'];
-		$img_width = $instance['img_width'];
-
 		echo $before_widget;
+		
+		if( !empty( $instance['title'] ) )
+			echo $before_title . apply_filters( 'widget_title', $title ) . $after_title;
 
-		if($title){
-
-			echo '<h3 class="widget-title">' . $before_title . $title . $after_title . '</h3>';
-		}
-
-		if($order_by == 'title'){
-			$order = 'ASC';
-		}else{
-			$order = 'DESC';
-		}
-
+		$order = 'title' == $instance['order_by'] ? 'ASC' : 'DESC';
 		$args = array(
 			'showposts' => $instance['num_of_posts'],
 			'cat'		=> $instance['select'],
