@@ -53,23 +53,21 @@ class DsAdvCatWidget extends WP_Widget {
 			'orderby'	=> esc_attr( $instance['order_by'] ),
 			'order'		=> $order
 		);
-		$the_query = new WP_Query($args); ?>
-		<ul>
-			<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-					<li><a href="<?php the_permalink(); ?>"><?php echo substr(get_the_title(), 0, 200); ?></a></li>
-					<?php if($f_image == true){
-						if ( has_post_thumbnail()) { ?>
-								<?php echo get_the_post_thumbnail($the_post->ID, array($img_width, 9999));
-							} ?>
-						<?php
-					}
-				?>
-			<?php endwhile;
-		?></ul>
-		<div style="clear:both"></div><?php
-
+		$the_query = new WP_Query( $args );
+		if( $the_query->have_posts() ):
+			echo '<ul>';
+			while ( $the_query->have_posts() ) : $the_query->the_post();
+				echo '<li><a href="' . get_permalink() . '">' . substr( get_the_title(), 0, 200 ) . '></a></li>';
+				if( $f_image && has_post_thumbnail() )
+					echo get_the_post_thumbnail( null, array( esc_attr( $instance['img_width'] ), 9999) );
+			endwhile;
+			echo '</ul><div style="clear:both"></div>';
+		endif;
+		wp_reset_postdata();
+		
 		echo $after_widget;
 	}
+	
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
