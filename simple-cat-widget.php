@@ -79,6 +79,12 @@ class DsAdvCatWidget extends WP_Widget {
 		return $instance;
 	}
 	function form( $instance ) {
+
+		// Defaults
+		$defaults = array( 'title' => '', 'select' => '', 'order_by' => '', 'f_image' => '', 'img_width' => '', 'num_of_posts' => '' );
+		$instance = wp_parse_args( (array) $instance, $defaults ); 
+		
+		// Escape Settings
 		$title = esc_attr($instance['title']);
 		$select = esc_attr($instance['select']);
 		$order_by = esc_attr($instance['order_by']);
